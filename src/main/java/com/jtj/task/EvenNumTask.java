@@ -26,7 +26,7 @@ public class EvenNumTask extends Task<ObservableList<Integer>> {
                 break;
             }
             workDone++;
-            this.updateMessage("Checking if" + i + " is an even number");
+            this.updateMessage("Checking if " + i + " is an even number");
             try{
                 Thread.sleep(this.sleepMillis);
             } catch (InterruptedException e) {
