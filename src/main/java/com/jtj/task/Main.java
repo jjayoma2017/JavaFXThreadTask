@@ -1,6 +1,7 @@
 package com.jtj.task;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     Button startBtn = new Button("Start");
+    Button resetBtn = new Button("Reset");
     Button cancelBtn = new Button("Cancel");
     Button exitBtn = new Button("Exit");
     boolean onceStarted = false;
@@ -35,10 +37,11 @@ public class Main extends Application {
         });
 
         cancelBtn.setOnAction(e->service.cancel());
-        exitBtn.setOnAction(e->stage.close());
+        resetBtn.setOnAction(e-> service.reset());
+        exitBtn.setOnAction(e-> Platform.exit());
 
         GridPane pane = new WorkerUI(service);
-        HBox box = new HBox(5,startBtn,cancelBtn,exitBtn);
+        HBox box = new HBox(5,startBtn,resetBtn,cancelBtn,exitBtn);
         BorderPane root = new BorderPane();
         root.setCenter(pane);
         root.setBottom(box);
